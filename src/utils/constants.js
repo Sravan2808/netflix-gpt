@@ -21,5 +21,10 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
   { identifier: "hindi", name: "Hindi" },
   { identifier: "telugu", name: "Telugu" },
+  { identifier: "tamil", name: "Tamil" },
+  { identifier: "kannada", name: "Kannada" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const OPENAI_KEY =
+  "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";
