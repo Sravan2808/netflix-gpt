@@ -8,6 +8,7 @@ import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 
+
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
