@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,9 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const userName = user?.displayName;
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {})
@@ -49,6 +52,9 @@ const Header = () => {
   const handleLanguageChange = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
+  const toggleDropDown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from from-black z-10 flex justify-between ">
       <img className="w-44" src={LOGO} alt="logo"></img>
@@ -73,10 +79,20 @@ const Header = () => {
           >
             {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
-          <img className="w-12 h-12" alt="usericon" src={user?.photoURL} />
-          <button onClick={handleSignOut} className="font-bold text-white">
-            (Sign Out)
-          </button>
+          <img
+            className="w-12 h-12"
+            alt="usericon"
+            src={user?.photoURL}
+            onClick={toggleDropDown}
+          />
+          {isDropdownOpen && (
+            <div className="absolute bg-[#333333] text-slate-400 mt-14 w-60 right-2 p-2 rounded-lg shadow-lg">
+              <ul>
+                <div className="">Hey {userName}👋 </div>
+                <button onClick={handleSignOut}>Sign out</button>
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </div>
