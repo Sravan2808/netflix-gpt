@@ -67,3 +67,5 @@
 - NetflixGPT
   - Search Bar
   - Movie Suggestions
+
+  ![video](./public/Recording%202025-02-28%20210358.mp4)
