@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  font-family: "Gilroy";
+}
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
